@@ -71,33 +71,30 @@
         </div>
     </section>
 
-    <script>
-        // Referencias a elementos del DOM
+    <script
         const form = document.getElementById('bakeryForm');
         const submitBtn = document.getElementById('btn-submit');
         const nombreInput = document.getElementById('nombre');
         const comentariosInput = document.getElementById('comentarios');
 
-        // --- EVENTO 1: 'blur' (Validación inmediata) ---
-        // Se activa cuando el usuario "sale" de la casilla del nombre
+        // evento 1: 'blur' (Validación inmediata)
+        //se activa cuando el usuario sale de la casilla del nombre
         nombreInput.addEventListener('blur', () => {
             if (nombreInput.value.trim().length < 3) {
-                nombreInput.classList.add('is-invalid'); // Borde rojo
+                nombreInput.classList.add('is-invalid'); 
                 nombreInput.classList.remove('is-valid');
             } else {
                 nombreInput.classList.remove('is-invalid');
-                nombreInput.classList.add('is-valid'); // Borde verde
+                nombreInput.classList.add('is-valid');
             }
         });
 
-        // --- EVENTO 2: 'input' (Interacción en tiempo real) ---
-        // Se activa cada vez que el usuario escribe una letra en comentarios
-        // (Podrías agregar un <small> debajo del textarea para mostrar esto)
+        //evento 2: 'input' (Interacción en tiempo real)
+        //se activa cada vez que el usuario escribe una letra en comentarios
         comentariosInput.addEventListener('input', (e) => {
             const caracteres = e.target.value.length;
             console.log("Escribiendo... caracteres: " + caracteres);
             
-            // Ejemplo visual: Cambiar color del borde si escribe mucho
             if(caracteres > 50) {
                 comentariosInput.classList.add('border-warning');
             } else {
@@ -105,26 +102,25 @@
             }
         });
 
-        // --- EVENTO 3: 'submit' (Envío y Proceso final) ---
+        // evento 3: 'submit'
         form.addEventListener('submit', (event) => {
-            event.preventDefault(); // Detener recarga automática
+            event.preventDefault();
             
-            // Validaciones finales antes de enviar
+            // validaciones finales antes de enviar
             let isValid = true;
 
-            // Re-validar nombre
             if (nombreInput.value.trim().length < 3) {
                 nombreInput.classList.add('is-invalid');
                 isValid = false;
             }
 
-            // Validar validaciones nativas (email, required)
+            
             if (!form.checkValidity()) {
                 form.classList.add('was-validated');
                 isValid = false;
             }
 
-            // Si es válido, enviamos a Formspree
+            
             if (isValid) {
                 enviarAFormspree();
             }
@@ -143,12 +139,12 @@
             })
             .then(response => {
                 if (response.ok) {
-                    // Guardar datos en localStorage
+                    
                     localStorage.setItem('pedido_nombre', nombreInput.value);
                     localStorage.setItem('pedido_email', document.getElementById('email').value);
                     localStorage.setItem('pedido_producto', document.getElementById('producto').value);
 
-                    // Redireccionar
+                    
                     window.location.href = 'confirmacion.html';
                 } else {
                     alert("Hubo un problema al enviar el correo.");
@@ -164,4 +160,5 @@
         }
     </script>
 </body>
+
 </html>
