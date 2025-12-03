@@ -78,7 +78,7 @@
         const comentariosInput = document.getElementById('comentarios');
 
         // evento 1: 'blur' (Validación inmediata)
-        //se activa cuando el usuario sale de la casilla del nombre
+        // se activa cuando el usuario sale de la casilla del nombre
         nombreInput.addEventListener('blur', () => {
             if (nombreInput.value.trim().length < 3) {
                 nombreInput.classList.add('is-invalid'); 
@@ -89,8 +89,8 @@
             }
         });
 
-        //evento 2: 'input' (Interacción en tiempo real)
-        //se activa cada vez que el usuario escribe una letra en comentarios
+        // evento 2: 'input' (Interacción en tiempo real)
+        // se activa cada vez que el usuario escribe una letra en comentarios
         comentariosInput.addEventListener('input', (e) => {
             const caracteres = e.target.value.length;
             console.log("Escribiendo... caracteres: " + caracteres);
@@ -162,4 +162,5 @@
 </body>
 
 </html>
+
 
