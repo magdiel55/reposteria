@@ -37,19 +37,19 @@
     </section>
 
     <script>
-        // Este script se ejecuta apenas carga la página
+        
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. Recuperar los datos guardados en la página anterior
+            
             const nombre = localStorage.getItem('pedido_nombre');
             const email = localStorage.getItem('pedido_email');
             const producto = localStorage.getItem('pedido_producto');
 
-            // 2. Si no hay datos (el usuario entró directo sin llenar form), lo regresamos
+            
             if (!nombre) {
                 alert("No hay pedido activo. Redirigiendo al formulario.");
                 window.location.href = 'pedido.html';
             } else {
-                // 3. Pintar los datos en pantalla
+                
                 document.getElementById('res-nombre').textContent = nombre;
                 document.getElementById('res-email').textContent = email;
                 document.getElementById('res-producto').textContent = producto;
@@ -57,4 +57,5 @@
         });
     </script>
 </body>
+
 </html>
